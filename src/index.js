@@ -1,5 +1,5 @@
 //IMPORTS & CREDENTIALS
-require('dotenv').config()
+// require('dotenv').config()
 const { Client, IntentsBitField, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRow, ActionRowBuilder, ComponentType, Attachment } = require('discord.js')
 const mongoose = require('mongoose')
 const profile = require('./schemas/profile')
@@ -40,7 +40,7 @@ async function init_System () {
 
 
 async function init_DB() {
-    await mongoose.connect(process.env.MONGODB_URI)
+    await mongoose.connect('mongodb+srv://AdministratorX:Blackbird%40731@kurejidb.lr1xt.mongodb.net/?retryWrites=true&w=majority&appName=KurejiDB')
     console.log('Connection to Database Stabilized')
 }
 
@@ -49,7 +49,7 @@ function init_Bot() {
         console.log('Bot Successfully Initialized')
     })
     init_BotFunctionalities()
-    bot.login(process.env.TOKEN);
+    bot.login('MTI4NjUwMTQ2OTMzOTUxNzAzMg.Go72lo.f4F50gSsWJtHSEUZuV3onSDyggFOZuniX4rcq8');
     
 }
 

@@ -22,6 +22,7 @@ const accentColor = '#00d3d3'
 const welcomeCH = '1287547994039648286'
 const interviewCH = '1292538752106758204'
 const profileCH = '1286445055325765712'
+const guidelinesCH = '1286347152775184468'
 
 //SERVER ROLES
 const welcomeRole = '1295984866973847552'
@@ -287,7 +288,7 @@ async function setup_InterviewPage(message) {
         await message.channel.send({
             files: [
                 {
-                    attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295224541894807612/image.png?ex=670ddf5a&is=670c8dda&hm=b5e35bdcab49d9596d13f8accc314d383466b7bc4609a4d62abd4edce9cce995&'
+                    attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295224541894807612/image.png?ex=6710825a&is=670f30da&hm=9e6b494890522dd1cd07e4e089036eb4e3ecb02668a1d5afe19b656cbdb31702&'
                 }
             ]
         })
@@ -467,8 +468,8 @@ async function setup_GuidelinesPage(message) {
                                 },
                                 )
                                     //FUNCTIONALITY
-    if(message.content === 'GP_Init'){
-        await bot.channels.cache.get(welcomeCH).bulkDelete(99)
+    if(message.content === 'GP_init'){
+        await bot.channels.cache.get(guidelinesCH).bulkDelete(99)
         await message.channel.send({ 
             embeds : [
                         guidelineBanner, 

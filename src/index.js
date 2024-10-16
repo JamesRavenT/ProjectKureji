@@ -19,14 +19,14 @@ const bot = new Client({
 const accentColor = '#00d3d3'
 
 //SERVER CHANNELS
-const welcomeCH = '1287183409470509158'
-const interviewCH = '1287222793137553408'
-const profileCH = '1287184900486725653'
+const welcomeCH = '1287547994039648286'
+const interviewCH = '1292538752106758204'
+const profileCH = '1286445055325765712'
 
 //SERVER ROLES
-const welcomeRole = '1287228735954620539'
-const interviewRole = '1287228778543579178'
-const memberRole = '1287228811888431165'
+const welcomeRole = '1295984866973847552'
+const interviewRole = '1295985151012241469'
+const memberRole = '1292582641945673779'
 
 //MAIN FUNCTION
 init_System()
@@ -195,9 +195,19 @@ async function setup_GreetingPage(message) {
                                         name: ' ' ,
                                         value: '\n\n\n' +
                                                'Even if a specific rule is not explicitly stated nor is this list considered exhaustive, ADMINS and FamKurejii reserve final interpretation. Decisions will be based on the general principles that ultimately promote healthy communities as well as assumption that members act in good faith.'
-                                    },
-                    
+                                    },                    
                             )
+    const interviewEmbed = new EmbedBuilder()
+                           .setColor(accentColor)
+                           .setTitle('THE RULES')
+                           .setDescription('◦◦◦◦◦◦◦◦◦◦◦◦')
+                           .addFields(
+                                {
+                                    name: 'Well Done!' ,
+                                    value: 'Since tapos mo na basahin ang lahat, pakipindot nalang yung Interview Button sa baba para makausap si Tito Bot!' 
+                                    },        
+                            )
+    //BUTTONS
     //BUTTONS
     const interviewBtn = new ButtonBuilder()
                         .setLabel('[0/1] Interview Room')
@@ -215,7 +225,8 @@ async function setup_GreetingPage(message) {
                         discordPolicies,
                         rulesBanner, 
                         rulesIntro,
-                        rules
+                        rules,
+                        interviewEmbed
                     ],  
         })
         const passToInterview = await message.channel.send({

@@ -216,7 +216,7 @@ async function setup_GreetingPage(message) {
     const interviewBtnWrapper = new ActionRowBuilder().addComponents(interviewBtn) 
 
     //FUNCTIONALITY
-    if(message.content === 'init_ReceptionPage'){
+    if(message.content === 'RP_init'){
         await bot.channels.cache.get(welcomeCH).bulkDelete(99)
         await message.channel.send({ 
             embeds : [
@@ -282,7 +282,7 @@ async function setup_GreetingPage(message) {
 
 async function setup_InterviewPage(message) {
     //COMMANDS
-    if(message.content === 'init_InterviewPage'){
+    if(message.content === 'IP_Init'){
         await bot.channels.cache.get(interviewCH).bulkDelete(99)
         await message.channel.send({
             files: [
@@ -467,7 +467,7 @@ async function setup_GuidelinesPage(message) {
                                 },
                                 )
                                     //FUNCTIONALITY
-    if(message.content === 'init_GuidelinesPage'){
+    if(message.content === 'GP_Init'){
         await bot.channels.cache.get(welcomeCH).bulkDelete(99)
         await message.channel.send({ 
             embeds : [

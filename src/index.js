@@ -283,7 +283,7 @@ async function setup_GreetingPage(message) {
 
 async function setup_InterviewPage(message) {
     //COMMANDS
-    if(message.content === 'IP_Init'){
+    if(message.content === 'IP_init'){
         await bot.channels.cache.get(interviewCH).bulkDelete(99)
         await message.channel.send({
             files: [

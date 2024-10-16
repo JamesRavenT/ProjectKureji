@@ -1,5 +1,5 @@
 //IMPORTS & CREDENTIALS
-require(dotenv).config()
+require('dotenv').config()
 const { Client, IntentsBitField, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRow, ActionRowBuilder, ComponentType, Attachment } = require('discord.js')
 const mongoose = require('mongoose')
 const profile = require('./schemas/profile')

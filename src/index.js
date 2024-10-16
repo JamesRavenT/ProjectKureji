@@ -307,7 +307,7 @@ async function setup_InterviewPage(message) {
         await message.channel.send({
             files: [
                 {
-                    attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=67105ae8&is=670f0968&hm=9d954db8d9469e817da7507c3a668018b22ea3b4f27c9828530370639510b7c0&'
                 }
             ]
         })
@@ -647,6 +647,287 @@ async function load_Profile(message, details){
     })
 }
 
+async function load_Choices(message, details){
+    //BUTTONS
+    const nameBtn = new ButtonBuilder()
+                        .setLabel('Name')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId('name-btn')
+    const smuleBtn = new ButtonBuilder()
+                        .setLabel('SmuleID')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId('smule-btn')
+    const pronounBtn = new ButtonBuilder()
+                           .setLabel('Pronoun')
+                           .setStyle(ButtonStyle.Primary)
+                           .setCustomId('pronoun-btn')
+    const bdayBtn = new ButtonBuilder()
+                        .setLabel('Birthday')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId('bday-btn')
+    const timezoneBtn = new ButtonBuilder()
+                        .setLabel('TimeZone')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId('timezone-btn')
+    const languageBtn = new ButtonBuilder()
+                            .setLabel('Language')
+                            .setStyle(ButtonStyle.Primary)
+                            .setCustomId('language-btn')
+    const likesBtn = new ButtonBuilder()
+                      .setLabel('Likes')
+                      .setStyle(ButtonStyle.Primary)
+                      .setCustomId('like-btn')
+    const dislikesBtn = new ButtonBuilder()
+                        .setLabel('Dislikes')
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId('dislike-btn')
+    const descriptionBtn = new ButtonBuilder()
+                               .setLabel('Description')
+                               .setStyle(ButtonStyle.Primary)
+                               .setCustomId('description-btn')
+    const infoBasic = new ActionRowBuilder().addComponents(nameBtn, smuleBtn, bdayBtn, pronounBtn)
+    const infoLangTZ = new ActionRowBuilder().addComponents(languageBtn, timezoneBtn)
+    const infoLikesNDislikes = new ActionRowBuilder().addComponents(likesBtn, dislikesBtn)
+    const infoDescrption = new ActionRowBuilder().addComponents(descriptionBtn)
 
+    //FUNCTIONALITY
+    await message.channel.send({
+        files: [
+            {
+                attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+            }
+        ]
+    })
+    await message.channel.send('# ANO?! SAN KA NAGKAMALI?!')
+    const informationBasic = await message.channel.send({
+            content: '# Basic Information',
+            components: [infoBasic]
+        }
+    )
+    const informationLTZ = await message.channel.send({
+            content: '# Language and TimeZones',
+            components: [infoLangTZ]
+        }
+    )      
+    const informationLikesNDislikes = await message.channel.send({
+            content: '# Likes and Dislikes',
+            components: [infoLikesNDislikes]
+        }
+    ) 
+    const informationDescription = await message.channel.send({
+            content: '# Description',
+            components: [infoDescrption]
+        }
+    )
+
+    const user = (i) => i.user.id === message.author.id;     
+    const row01Collector = informationBasic.createMessageComponentCollector({
+        componentType: ComponentType.Button, user
+    })
+    const row02Collector = informationLTZ.createMessageComponentCollector({
+        componentType: ComponentType.Button, user
+    })
+    const row03Collector = informationLikesNDislikes.createMessageComponentCollector({
+        componentType: ComponentType.Button, user
+    })
+    const row04Collector = informationDescription.createMessageComponentCollector({
+        componentType: ComponentType.Button, user
+    })
+
+    //BUTTON AWAITS
+    row01Collector.on('collect', async (interaction) => {
+        if(interaction.customId === 'name-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id; 
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })                
+            await message.channel.send('Sige.\n' + '# ANO ANG TAMANG NICKNAME MO?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[0] = collected.first().content
+                load_Profile(message, details)
+            })
+
+        } else if(interaction.customId === 'smule-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })                 
+            await message.channel.send('Sige.\n' + '# ANO ANG TAMANG SMULE ID MO?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[1] = collected.first().content
+                load_Profile(message, details)
+            })
+
+        } else if(interaction.customId === 'bday-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# ANO ANG TAMANG BIRTHDAY MO?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[2] = collected.first().content
+                load_Profile(message, details)
+            })
+
+        } else if(interaction.customId === 'pronoun-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# ANO ANG TAMANG PRONOUNS MO?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[3] = collected.first().content
+                load_Profile(message, details)
+            })
+        } 
+    })
+
+    row02Collector.on('collect', async (interaction) => {
+        if(interaction.customId === 'timezone-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# ANO ANG TAMANG TIMEZONE MO?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[4] = collected.first().content
+                load_Profile(message, details)
+            })
+
+        } else if(interaction.customId === 'language-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# ANO ANG TAMANG LANGUAGES NA ALAM MO?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[5] = collected.first().content
+                load_Profile(message, details)
+            })
+        }
+    })
+
+    row03Collector.on('collect', async (interaction) => {
+        if(interaction.customId === 'like-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# ANO BA ANG MGA LIKES MO TALAGA?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[6] = collected.first().content
+                load_Profile(message, details)
+            })
+
+        } else if(interaction.customId === 'dislike-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# ANO BA ANG MGA DISLIKES MO TALAGA?!')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[7] = collected.first().content
+                load_Profile(message, details)
+            })
+        }
+    })
+
+    row04Collector.on('collect', async (interaction) => {
+        if(interaction.customId === 'description-btn') {
+            const msg_filter = (m) => m.author.id === message.author.id;
+            await message.channel.bulkDelete(6)
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                    }
+                ]
+            })
+            await message.channel.send('Sige.\n' + '# TELL ME ABOUT YOURSELF ULI.')
+            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+            .then(async (collected) => {
+                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                details[8] = collected.first().content
+                load_Profile(message, details)
+            })
+        } 
+    })
+
+
+
+}
+
+async function upload_ProfileToDB() {
+             await profile.create({
+                userId: 'b',
+                userName: 'b',
+                smuleId: 'b',
+                birthday: 'b',
+                pronouns: 'b',
+                timezone: 'b',
+                languages:'b',
+                likes: 'b',
+                dislikes: 'b',
+                description: 'b',
+            }) 
+
+
+};
 
 //322319

@@ -115,7 +115,6 @@ async function setup_GreetingPage(message) {
     const rulesIntro = new EmbedBuilder()
                           .setColor(accentColor)
                           .setTitle('“Be kureiji, but don\'t let it get out of control.”')
-                          .setDescription('◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦')
                           .addFields(
                                 {
                                 name: '\n' ,
@@ -131,28 +130,33 @@ async function setup_GreetingPage(message) {
     const rules = new EmbedBuilder()
                            .setColor(accentColor)
                            .setTitle('THE RULES')
-                           .setDescription('◦◦◦◦◦◦◦◦◦◦◦◦')
                            .addFields(
                                 {
                                     name: '◎◎ Rule 1: BE RESPECTFUL [ Very Demure ]' ,
                                     value: '✦ Please treat everybody with kindness and understanding during our stay in this facility and while we are communicating with other kurejii’s.. ' +
-                                        '\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦'
+                                        '\n\n\n'
                                     },
                                     {
                                         name: 'A. MEMBER INTERACTION' ,
                                         value: 'Flaming, harassment, bullying, discrimination, hate speech and abuse will NOT be tolerated. This includes but isn’t limited to: threatening, obscene, defamatory, condescending, libelous, racial, religious, political, sexually objectionable, doctored, or bigotry content.'
+                                    +'\n\n'
                                     },
+                                    
                                     {
                                         name: 'B. FOUL LANGUAGES' ,
-                                        value: 'Let’s minimize the extreme or harsh use of such languages. We don’t really mind you swearing in any form but please avoid being offensive or insulting towards any member within the server. ',
+                                        value: 'Let’s minimize the extreme or harsh use of such languages. We don’t really mind you swearing in any form but please avoid being offensive or insulting towards any member within the server. '
+                                    +'\n\n'
                                     },
                                     {
                                         name: 'C. DOXING' ,
                                         value: 'Don’t share personal information of other members without their consent.'
+                                    +'\n\n'
                                     },
                                     {
                                         name: 'D. SLANDER' ,
-                                        value: 'Refrain from displaying any form of hostility or trying to incite drama. If you have issues with any of the member, kindly deal with it privately or elsewhere.', 
+                                        value: 'Refrain from displaying any form of hostility or trying to incite drama. If you have issues with any of the member, kindly deal with it privately or elsewhere.' 
+                                    +'\n\n'
+                                    
                                     },
 
                                     {
@@ -164,24 +168,27 @@ async function setup_GreetingPage(message) {
                                 {
                                     name: '◎◎ Rule 2: KEEP YOUR CONTENT APPROPRIATE. [ Very Mindful ]' ,
                                     value: '✦ We wanted to maintain a safe space for everyone in the server so let’s always be mindful of others.' +
-                                           '\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦◦'
+                                            '\n\n\n'
                                     },
                                     {
                                         name: 'A. INNAPPROPRIATE MEDIA' ,
                                         value: 'Distribution of pornographic, offensive or uncomfortable, extremely disturbing or NSFL/NSFW (not safe for work) content will NOT be tolerated. Do not share the following examples: hentai, gore, shock media, etc. in any form of content without the Admins evaluation. Additionaly, Sharing of content, from text to media, that suggests normalization or justification of sexualizing minors is strongly prohibited. '
+                                            +'\n\n'
                                     },
                                     {
                                         name: 'B. USER PROFILE' ,
                                         value: 'Always make sure to keep Usernames, Profile Pictures, User Statuses and Other Customizable User Information appropriate. Admins will request from the members to change these or will personally change the name of the user in the server without prior notice.'
+                                            +'\n\n'
                                     },
                                 {
                                     name: '◎◎ Rule 3: STAY ON TOPIC! [ Very Cutesy ]' ,
                                     value: '✦ Messages are to be sent in the appropriate channels. Messages may be deleted without notice if they are not in the right place. Always review each channel\'s description and pinned messages to understand its purpose, rules, and other information.' +
-                                            '\n◦◦◦◦◦◦◦◦◦◦◦◦'
+                                            '\n\n\n'
                                     },
                                     {
                                         name: 'A. SPAMMING' ,
                                         value: 'Do not flood discussions with consecutive separate messages of single letters, words, images, emoticons, or large blocks of text in one or multiple channels.'
+                                   +'\n\n'
                                     },
                                     {
                                         name: 'B. ROLE TAGGING' ,
@@ -191,6 +198,7 @@ async function setup_GreetingPage(message) {
                                     {
                                         name: 'C. INVASIVE ADVERTISING' ,
                                         value: 'Do not promote any group, idea, organising an event with intention of using the server as platform, or organisation within the server without express permission of the Admins (this includes other discord servers\' link).'
+                                    +'\n\n'
                                     },
                                     {
                                         name: ' ' ,
@@ -200,11 +208,10 @@ async function setup_GreetingPage(message) {
                             )
     const interviewEmbed = new EmbedBuilder()
                            .setColor(accentColor)
-                           .setTitle('THE RULES')
-                           .setDescription('◦◦◦◦◦◦◦◦◦◦◦◦')
+                           .setTitle('WELL DONE')
                            .addFields(
                                 {
-                                    name: 'Well Done!' ,
+                                    name: 'Time for an Interview!' ,
                                     value: 'Since tapos mo na basahin ang lahat, pakipindot nalang yung Interview Button sa baba para makausap si Tito Bot!' 
                                     },        
                             )

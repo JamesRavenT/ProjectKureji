@@ -641,7 +641,7 @@ async function load_Profile(message, details){
     //EMBEDS
     const embed = new EmbedBuilder()
                       .setColor(accentColor)
-                      .setTitle('Kureiji MEMBER ID')
+                      .setTitle('KUREIJI MEMBER ID')
                       .setThumbnail('https://cdn.discordapp.com/attachments/1287203018957262964/1287203227309178951/Untitled135-02.jpeg?ex=66f0b0ec&is=66ef5f6c&hm=752df88eadb97095bc0f31923c3d22f39ed6bb2ce8a057f16d0c0461aac14fec&')
                       .setDescription( '\n◦◦◦◦◦◦◦◦◦◦◦◦◦◦' )
                       .addFields(

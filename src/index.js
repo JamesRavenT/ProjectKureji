@@ -620,6 +620,10 @@ const rules = new EmbedBuilder()
                         rulesBanner, 
                         rulesIntro,
                         rules,
+                    ],  
+        })
+        await message.channel.send({ 
+            embeds : [
                         guidelineBanner, 
                         guideline, 
                         strikeSystemBanner,

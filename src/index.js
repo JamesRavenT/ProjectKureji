@@ -310,15 +310,14 @@ async function setup_InterviewPage(message) {
                         .setCustomId('interview')
         const interviewBtnWrapper = new ActionRowBuilder().addComponents(interviewBtn) 
         const readyBtn = new ButtonBuilder()
-                        .setLabel('[0/1] Interview Room')
+                        .setLabel('Yes Tito Bot!')
                         .setStyle(ButtonStyle.Primary)
                         .setCustomId('ready')
-        const readyBtnWrapper = new ActionRowBuilder().addComponents(readyBtn) 
         const notreadyBtn = new ButtonBuilder()
-                        .setLabel('[0/1] Interview Room')
+                        .setLabel('Di pa po Tito Bot..')
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId('notready')
-        const notreadyBtnWrapper = new ActionRowBuilder().addComponents(notreadyBtn) 
+        const rowOfButtons2 = new ActionRowBuilder().addComponents(readyBtn, notreadyBtn) 
         await bot.channels.cache.get(interviewCH).bulkDelete(99)
         await message.channel.send({
             files: [
@@ -329,7 +328,7 @@ async function setup_InterviewPage(message) {
         })
         const introduction = await message.channel.send({
             content:'Welcome! I am Tito Bot and I\'ll be the one to interview you today. It will just be a few questions kaya relax ka lang. \n\n **Ready ka na ba?**', 
-            components: [readyBtnWrapper, notreadyBtnWrapper]
+            components: [rowOfButtons2]
         })
 
         const introductionCollector = introduction.createMessageComponentCollector({ componentType: ComponentType.Button })

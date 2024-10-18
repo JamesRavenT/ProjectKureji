@@ -388,9 +388,10 @@ async function setup_InterviewPage(message) {
                                 }
                             } catch(error) {}
                         }) 
-                    setup_InterviewPage()
-
-                } else {
+                    
+                        setup_InterviewPage()
+                
+                    } else {
                     await bot.channels.cache.get(interviewCH).bulkDelete(3)
                     await message.channel.send({
                         files: [

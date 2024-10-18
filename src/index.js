@@ -559,17 +559,6 @@ async function load_Profile(message, details){
                         }
                     } catch(error) {}
                 }) 
-
-            message.channel.bulkDelete(99).then(async () => {
-                await message.channel.send({
-                    files: [
-                        {
-                            attachment: kalmTitoBot
-                        }
-                    ]
-                })
-                bot.channels.cache.get(interviewCH).send('Welcome! I am Tito Bot and I\'ll be the one to interview you today. It will just be a few questions kaya relax ka lang. If ready ka na, type \"I am a Kureiji Person\". Okay?')
-             }) 
              await profile.create({
                 userName: details[0],
                 smuleId: smuleID,
@@ -581,6 +570,7 @@ async function load_Profile(message, details){
                 dislikes: details[7],
                 description: details[8],
             })   
+            setup_InterviewPage(message)
         } else if(interaction.customId === 'no-btn') {
             await message.channel.bulkDelete(2)
             await load_Choices(message, details)    

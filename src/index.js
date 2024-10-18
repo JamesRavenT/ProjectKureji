@@ -319,7 +319,7 @@ async function setup_InterviewPage(message) {
                         .setCustomId('notready')
         const rowOfButtons2 = new ActionRowBuilder().addComponents(readyBtn, notreadyBtn) 
         await bot.channels.cache.get(interviewCH).bulkDelete(99).then(async () => {
-            await message.channel.send({
+            message.channel.send({
                 files: [
                     {
                         attachment: kalmTitoBot

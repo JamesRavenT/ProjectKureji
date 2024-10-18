@@ -30,8 +30,8 @@ const interviewRole = '1295985151012241469'
 const memberRole = '1292582641945673779'
 
 //PICS NI TITO BOT
-const kalmTitoBot = 'https://imgur.com/msT9gbO'
-const angeryTitoBot = 'https://imgur.com/mL64t4r'
+const kalmTitoBot = 'https://cdn.discordapp.com/attachments/1104457022071644240/1296656140742168636/image-18.png?ex=671314a2&is=6711c322&hm=d7bcc9814e686b9dcadbddb3c82bc238c0f240571c78c7504ae3ceab5808db64&'
+const angeryTitoBot = 'https://cdn.discordapp.com/attachments/1104457022071644240/1296656158899175445/takeshi-ooi-photo-u1.jpg?ex=671314a6&is=6711c326&hm=3b464e7d97e9df17bc1e3cbbf68d7bd07472efeb9330ab65274d98dc51823e3a&'
 
 //MAIN FUNCTION
 init_System()

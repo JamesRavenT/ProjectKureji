@@ -318,120 +318,118 @@ async function setup_InterviewPage(message) {
                         .setStyle(ButtonStyle.Danger)
                         .setCustomId('notready')
         const rowOfButtons2 = new ActionRowBuilder().addComponents(readyBtn, notreadyBtn) 
-        await bot.channels.cache.get(interviewCH).bulkDelete(99)
-        await message.channel.send({
-            files: [
-                {
-                    attachment: kalmTitoBot
-                }
-            ]
-        })
-        const introduction = await message.channel.send({
-            content:'Welcome! I am Tito Bot and I\'ll be the one to interview you today. It will just be a few questions kaya relax ka lang. \n\n' +  '# Ready ka na ba?', 
-            components: [rowOfButtons2]
-        })
-
-        const introductionCollector = introduction.createMessageComponentCollector({ componentType: ComponentType.Button })
-        introductionCollector.on('collect', async (interaction) => {
-            try{
-                if(interaction.customId === 'notready') {
-                    const welrole = interaction.guild.roles.cache.get(welcomeRole)
-                    const inrole = interaction.guild.roles.cache.get(interviewRole)
-                    await interaction.member.roles.remove(inrole)
-                    await interaction.member.roles.add(welrole)
-                    bot.channels.cache.get(welcomeCH).bulkDelete(1)
-                    const passToInterview = await bot.channels.cache.get(welcomeCH).send({
-                        components: [interviewBtnWrapper]
-                    })
-                    const actionCollector = passToInterview.createMessageComponentCollector({ componentType: ComponentType.Button })
-                    actionCollector.on('collect', async (interaction) => {
-                            try{
-                                if(interaction.customId === 'interview') {
-                                    let newActionRowEmbeds = interaction.message.components.map(oldActionRow => {
-            
-                                        //create a new action row to add the new data
-                                        updatedActionRow = new ActionRowBuilder();
-                                        
-                                        // Loop through old action row components (which are buttons in this case)
-                                        updatedActionRow.addComponents(oldActionRow.components.map(buttonComponent => {
-                                    
-                                        //create a new button from the old button, to change it if necessary
-                                        newInterviewButton = ButtonBuilder.from(buttonComponent)
-                                        
-                                        //if this was the button that was clicked, this is the one to change!
-                                        if(interaction.component.customId == buttonComponent.customId){
-                                    
-                                            //If the button was a primary button then change to secondary, or vise versa
-                                            if(buttonComponent.style == ButtonStyle.Primary){
-                                                const interviewrole = interaction.guild.roles.cache.get(interviewRole)
-                                                const welcomerole = interaction.guild.roles.cache.get(welcomeRole)
-                                                interaction.member.roles.add(interviewrole)
-                                                interaction.member.roles.remove(welcomerole)
-                                                newInterviewButton.setLabel('[1/1] Interview Room')  
-                                                newInterviewButton.setStyle(ButtonStyle.Danger)
-                                            }
-                                            else if (buttonComponent.style == ButtonStyle.Danger){
-                                                interaction.reply({
-                                                    content: 'Sorry! I\'m currently interviewing someone, please wait for your turn.',
-                                                    ephemeral: true
-                                                })
-                                            }
-                                        }
-                                        return newInterviewButton
-                                        }));
-                                        return updatedActionRow
-                                    });
-                                
-                                    await interaction.update({
-                                        components: newActionRowEmbeds
-                                    })
-                                }
-                            } catch(error) {}
-                        }) 
-                    
-                        setup_InterviewPage()
-                
-                    } else {
-                    await bot.channels.cache.get(interviewCH).bulkDelete(3)
-                    await message.channel.send({
-                        files: [
-                            {
-                                attachment: angeryTitoBot
-                            }
-                        ]
-                    })
-                    let details = []
-                    let questions= [
-                        '# YOROSHI SOSHITE HAJIMERO!' + '\n' + '# ANO ANG NICKNAME MO?!',
-                        '# SMULE ID?!',
-                        '# BIRTHDAY?!' + '\n Ganitong format ha.. MM/DD\n' + '# GO!',
-                        '# PREFERRED PRONOUN(S)?!',
-                        '# TIMEZONE?!',
-                        '# LANGUAGES AND DIALECTS?!',
-                        '# LIKES?!',
-                        '# DISLIKES?!',
-                        '# TELL ME SOMETHING ABOUT YOURSELF OR KAHIT YUNG FAVORITE QUOTATION MO.'
-                    ]
-                    //Questions
-                    for(let i = 0 ; i < 9 ; i++) {
-                        const msg_filter = (m) => m.author.id === message.author.id;                 
-                        await message.channel.send(questions[i])
-                        await message.channel.awaitMessages({filter: msg_filter, max: 1})
-                        .then(async (collected) => {
-                            await bot.channels.cache.get(interviewCH).bulkDelete(2)
-                            details.push(collected.first().content)
-                       
-                        })
+        await bot.channels.cache.get(interviewCH).bulkDelete(99).then(async () => {
+            await message.channel.send({
+                files: [
+                    {
+                        attachment: kalmTitoBot
                     }
-                    load_Profile(message, details);
-                }
-            }catch(e){}
+                ]
+            })
+            const introduction = await message.channel.send({
+                content:'Welcome! I am Tito Bot and I\'ll be the one to interview you today. It will just be a few questions kaya relax ka lang. \n' +  '# Ready ka na ba?', 
+                components: [rowOfButtons2]
+            })
+    
+            const introductionCollector = introduction.createMessageComponentCollector({ componentType: ComponentType.Button })
+            introductionCollector.on('collect', async (interaction) => {
+                try{
+                    if(interaction.customId === 'notready') {
+                        const welrole = interaction.guild.roles.cache.get(welcomeRole)
+                        const inrole = interaction.guild.roles.cache.get(interviewRole)
+                        await interaction.member.roles.remove(inrole)
+                        await interaction.member.roles.add(welrole)
+                        bot.channels.cache.get(welcomeCH).bulkDelete(1)
+                        const passToInterview = await bot.channels.cache.get(welcomeCH).send({
+                            components: [interviewBtnWrapper]
+                        })
+                        const actionCollector = passToInterview.createMessageComponentCollector({ componentType: ComponentType.Button })
+                        actionCollector.on('collect', async (interaction) => {
+                                try{
+                                    if(interaction.customId === 'interview') {
+                                        let newActionRowEmbeds = interaction.message.components.map(oldActionRow => {
+                
+                                            //create a new action row to add the new data
+                                            updatedActionRow = new ActionRowBuilder();
+                                            
+                                            // Loop through old action row components (which are buttons in this case)
+                                            updatedActionRow.addComponents(oldActionRow.components.map(buttonComponent => {
+                                        
+                                            //create a new button from the old button, to change it if necessary
+                                            newInterviewButton = ButtonBuilder.from(buttonComponent)
+                                            
+                                            //if this was the button that was clicked, this is the one to change!
+                                            if(interaction.component.customId == buttonComponent.customId){
+                                        
+                                                //If the button was a primary button then change to secondary, or vise versa
+                                                if(buttonComponent.style == ButtonStyle.Primary){
+                                                    const interviewrole = interaction.guild.roles.cache.get(interviewRole)
+                                                    const welcomerole = interaction.guild.roles.cache.get(welcomeRole)
+                                                    interaction.member.roles.add(interviewrole)
+                                                    interaction.member.roles.remove(welcomerole)
+                                                    newInterviewButton.setLabel('[1/1] Interview Room')  
+                                                    newInterviewButton.setStyle(ButtonStyle.Danger)
+                                                }
+                                                else if (buttonComponent.style == ButtonStyle.Danger){
+                                                    interaction.reply({
+                                                        content: 'Sorry! I\'m currently interviewing someone, please wait for your turn.',
+                                                        ephemeral: true
+                                                    })
+                                                }
+                                            }
+                                            return newInterviewButton
+                                            }));
+                                            return updatedActionRow
+                                        });
+                                    
+                                        await interaction.update({
+                                            components: newActionRowEmbeds
+                                        })
+                                    }
+                                } catch(error) {}
+                            }) 
+                        
+                            setup_InterviewPage()
+                    
+                        } else {
+                        await bot.channels.cache.get(interviewCH).bulkDelete(3)
+                        await message.channel.send({
+                            files: [
+                                {
+                                    attachment: angeryTitoBot
+                                }
+                            ]
+                        })
+                        let details = []
+                        let questions= [
+                            '# YOROSHI SOSHITE HAJIMERO!' + '\n' + '# ANO ANG NICKNAME MO?!',
+                            '# SMULE ID?!',
+                            '# BIRTHDAY?!' + '\n Ganitong format ha.. MM/DD\n' + '# GO!',
+                            '# PREFERRED PRONOUN(S)?!',
+                            '# TIMEZONE?!',
+                            '# LANGUAGES AND DIALECTS?!',
+                            '# LIKES?!',
+                            '# DISLIKES?!',
+                            '# TELL ME SOMETHING ABOUT YOURSELF OR KAHIT YUNG FAVORITE QUOTATION MO.'
+                        ]
+                        //Questions
+                        for(let i = 0 ; i < 9 ; i++) {
+                            const msg_filter = (m) => m.author.id === message.author.id;                 
+                            await message.channel.send(questions[i])
+                            await message.channel.awaitMessages({filter: msg_filter, max: 1})
+                            .then(async (collected) => {
+                                await bot.channels.cache.get(interviewCH).bulkDelete(2)
+                                details.push(collected.first().content)
+                           
+                            })
+                        }
+                        load_Profile(message, details);
+                    }
+                }catch(e){}
+            })
         })
-    
-    
+        
 }
-
-
 
 async function load_Profile(message, details){
     //Variables

@@ -30,8 +30,8 @@ const interviewRole = '1295985151012241469'
 const memberRole = '1292582641945673779'
 
 //PICS NI TITO BOT
-const kalmTitoBot = 'kalm.jpg'
-const angeryTitoBot = '/angery.jpg'
+const kalmTitoBot = './kalm.jpg'
+const angeryTitoBot = './angery.jpg'
 
 //MAIN FUNCTION
 init_System()

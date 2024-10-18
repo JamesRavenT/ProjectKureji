@@ -30,8 +30,8 @@ const interviewRole = '1295985151012241469'
 const memberRole = '1292582641945673779'
 
 //PICS NI TITO BOT
-const kalmTitoBot = 'kalm.png'
-const angeryTitoBot = '.angery.jpg'
+const kalmTitoBot = 'src/kalm.png'
+const angeryTitoBot = 'src/angery.jpg'
 
 //MAIN FUNCTION
 init_System()
@@ -758,7 +758,7 @@ async function load_Choices(message, details){
             await message.channel.send({
                 files: [
                     {
-                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                        attachment: angeryTitoBot
                     }
                 ]
             })
@@ -776,7 +776,7 @@ async function load_Choices(message, details){
             await message.channel.send({
                 files: [
                     {
-                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                        attachment: angeryTitoBot
                     }
                 ]
             })
@@ -797,7 +797,7 @@ async function load_Choices(message, details){
             await message.channel.send({
                 files: [
                     {
-                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                        attachment: angeryTitoBot
                     }
                 ]
             })
@@ -815,7 +815,7 @@ async function load_Choices(message, details){
             await message.channel.send({
                 files: [
                     {
-                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                        attachment: angeryTitoBot
                     }
                 ]
             })
@@ -836,7 +836,7 @@ async function load_Choices(message, details){
             await message.channel.send({
                 files: [
                     {
-                        attachment: 'https://cdn.discordapp.com/attachments/1287203018957262964/1295182184994312222/takeshi-ooi-photo-u1.jpg?ex=670db7e8&is=670c6668&hm=ee8d8d1814be75ded62414839a47ade5c6ce654c55dbf2a2891131af510341ec&'
+                        attachment: angeryTitoBot
                     }
                 ]
             })

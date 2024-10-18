@@ -327,7 +327,7 @@ async function setup_InterviewPage(message) {
             ]
         })
         const introduction = await message.channel.send({
-            content:'Welcome! I am Tito Bot and I\'ll be the one to interview you today. It will just be a few questions kaya relax ka lang. \n\n **Ready ka na ba?**', 
+            content:'Welcome! I am Tito Bot and I\'ll be the one to interview you today. It will just be a few questions kaya relax ka lang. \n\n' +  '# Ready ka na ba?', 
             components: [rowOfButtons2]
         })
 

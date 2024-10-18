@@ -71,9 +71,6 @@ function init_BotFunctionalities() {
 }
 
 async function init_Commands(m) {
-    setup_GreetingPage(m)
-    setup_InterviewPage(m)
-    setup_GuidelinesPage(m)
     if(m.content === 'AllPG_ref') {
         setup_GreetingPage(m)
         setup_InterviewPage(m)

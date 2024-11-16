@@ -1,8 +1,15 @@
 const {Schema, model} = require('mongoose')
 
 let profile = new Schema({
+    memberId: { 
+        type: String, 
+        required: true 
+    },
 
-    userName: { type: String, required: true },
+    userName: { 
+        type: String, 
+        required: true 
+    },
 
     smuleId: {
         type: String,

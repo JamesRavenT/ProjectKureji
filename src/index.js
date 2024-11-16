@@ -47,7 +47,7 @@ function init_Bot() {
     bot.on('ready', (b) => {
         console.log('Bot Successfully Initialized')
     })
-    bot.login(process.env.TESTBOTTOKEN);
+    bot.login(process.env.TOKEN);
     
 }
 
